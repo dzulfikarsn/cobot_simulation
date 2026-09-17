@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="cobot_gazebo_ros2_control">
+
+    <ros2_control name="cobot_gazebo_ros2_control" type="system">
+      <hardware>
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+      </hardware>
+
+      <joint name="joint_0">
+        <command_interface name="position" />
+        <state_interface name="position" />
+      </joint>
+      <joint name="joint_1">
+        <command_interface name="position" />
+        <state_interface name="position" />
+      </joint>
+      <joint name="joint_2">
+        <command_interface name="position" />
+        <state_interface name="position" />
+      </joint>
+      <joint name="joint_3">
+        <command_interface name="position" />
+        <state_interface name="position" />
+      </joint>
+      <joint name="joint_4">
+        <command_interface name="position" />
+        <state_interface name="position" />
+      </joint>
+
+      <joint name="joint_gripper">
+        <command_interface name="position" />
+        <state_interface name="position" />
+      </joint>
+
+      <!-- mimic joint_gripper -->
+      <joint name="joint_link5_to_out_right_grip">
+        <command_interface name="position" />
+        <state_interface name="position" />
+      </joint>
+      <joint name="joint_link5_to_in_left_grip">
+        <command_interface name="position" />
+        <state_interface name="position" />
+      </joint>
+      <joint name="joint_link5_to_in_right_grip">
+        <command_interface name="position" />
+        <state_interface name="position" />
+      </joint>
+      <joint name="joint_out_left_grip_to_left_gripper">
+        <command_interface name="position" />
+        <state_interface name="position" />
+      </joint>
+      <joint name="joint_out_right_grip_to_right_gripper">
+        <command_interface name="position" />
+        <state_interface name="position" />
+      </joint>
+    </ros2_control>
+
+    <gazebo>
+      <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+        <parameters>$(find cobot_simulation)/config/cobot.gazebo.controllers.yaml</parameters>
+      </plugin>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>

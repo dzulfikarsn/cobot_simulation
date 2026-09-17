@@ -1,0 +1,39 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    gripper_controller:
+      type: position_controllers/JointGroupPositionController
+    
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - joint_0
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+
+    command_interfaces:
+      - position
+    
+    state_interfaces:
+      - position
+
+gripper_controller:
+  ros__parameters:
+    joints:
+      - joint_gripper
+      # mimic joint_gripper — urutan ini menentukan urutan array command,
+      # dan pengirim command harus menerapkan multiplier-nya sendiri
+      - joint_link5_to_out_right_grip          # mimic x1.0
+      - joint_link5_to_in_left_grip            # mimic x1.2
+      - joint_link5_to_in_right_grip           # mimic x1.2
+      - joint_out_left_grip_to_left_gripper    # mimic x1.0
+      - joint_out_right_grip_to_right_gripper  # mimic x1.0

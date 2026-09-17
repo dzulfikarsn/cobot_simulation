@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="cobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find cobot_description)/urdf/cobot.description.xacro" />
+  <xacro:include filename="$(find cobot_simulation)/urdf/cobot.gazebo.ros2_control.xacro" />
+  <xacro:include filename="$(find cobot_simulation)/urdf/cobot.gazebo.sensor.xacro" />
+
+  <xacro:cobot_description simulation="true" />
+  <xacro:cobot_gazebo_ros2_control />
+
+  <!-- <xacro:camera_sensor frame_id ="camera_link" name="camera" /> -->
+  <!-- <xacro:range_sensor frame_id="range_gripper_link" name="range_gripper" /> -->
+
+</robot>
